@@ -1,12 +1,9 @@
 const button = document.querySelector(".cats__btn");
 const image = document.querySelector(".cats__image");
 const url = "https://api.thecatapi.com/v1/images/search";
+let timeout = null;
 
 async function getImage() {
-  // return fetch(url)
-  //   .then((res) => res.json())
-  //   .then((data) => data[0].url)
-  //   .catch((err) => err);
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -24,9 +21,19 @@ async function changeImage() {
     return null;
   }
   image.src = newImage;
-  console.log("Update Image");
+  timeout = setTimeout(() => {
+    if (!image.complete) {
+      button.disabled = false;
+      console.error("Изображение не загрузилось вовремя.");
+    }
+  }, 5000);
   return null;
 }
 
 button.addEventListener("click", changeImage);
-image.addEventListener("load", () => (button.disabled = false));
+
+image.addEventListener("load", () => {
+  clearTimeout(timeout);
+  button.disabled = false;
+  console.log("Изображение загружено успешно.");
+});
