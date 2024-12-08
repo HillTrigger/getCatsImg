@@ -25,8 +25,8 @@ async function changeImage() {
   }
   image.src = newImage;
   console.log("Update Image");
-  button.disabled = false;
   return null;
 }
 
 button.addEventListener("click", changeImage);
+image.addEventListener("load", () => (button.disabled = false));
