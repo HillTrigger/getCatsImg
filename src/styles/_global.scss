@@ -1,0 +1,15 @@
+@use "@/styles/color";
+@use "@/styles/fonts";
+
+* {
+  font-weight: 500;
+  font-family: fonts.$Roboto;
+}
+
+html,
+body {
+  max-width: 60rem;
+  width: 100%;
+  margin: 0 auto;
+  background-color: color.$background;
+}
