@@ -36,7 +36,7 @@ module.exports = {
   },
   output: {
     filename: filename("js"),
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
   },
   resolve: {
     extensions: [".js", ".json"],
@@ -84,7 +84,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "src/assests"),
-          to: path.resolve(__dirname, "dist/assests"),
+          to: path.resolve(__dirname, "docs/assests"),
         },
         // {
         //   from: path.resolve(__dirname, "favicon.ico"),
@@ -103,7 +103,7 @@ module.exports = {
         test: /\.(woff|woff2|ttf|eot)$/i,
         type: "asset/resource", // Webpack 5+ автоматически копирует шрифты в output
         generator: {
-          filename: "assets/fonts/[name][ext]", // Укажите путь, куда будут копироваться шрифты
+          filename: "assests/fonts/[name][ext]", // Укажите путь, куда будут копироваться шрифты
         },
       },
       {
